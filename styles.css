@@ -1,0 +1,245 @@
+:root {
+  --ink: #202020;
+  --panel: #d9eaf4;
+  --button: #d9eaf4;
+  --blue: #247d9c;
+  --shell: #1e1e1e;
+  --radius-card: 22px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--ink);
+}
+
+* { box-sizing: border-box; }
+
+html, body { min-height: 100%; margin: 0; }
+body {
+  background: #1e1e1e;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+button { font: inherit; cursor: pointer; }
+button:focus-visible { outline: 3px solid #1a7295; outline-offset: 3px; }
+
+.app-shell {
+  width: min(100%, 430px);
+  min-height: 100vh;
+  background: var(--shell);
+  border: 1px solid #a7a7a7;
+  overflow: hidden;
+}
+
+.screen { min-height: 100vh; }
+[hidden] { display: none !important; }
+
+/* Welcome screen: replace assets/exhibit.jpg with the cropped exhibit photo
+   exported from Figma or supplied by the museum. */
+.welcome-screen, .instruction-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7.5vh 0;
+  background: #1e1e1e;
+}
+
+.exhibit-image, .instruction-exhibit {
+  width: 100%;
+  min-height: 66vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background:
+    linear-gradient(180deg, rgba(30, 30, 30, .3), rgba(30, 30, 30, .04) 42%, rgba(0, 0, 0, .24)),
+    url("assets/underwater-background.JPG") center center / cover no-repeat,
+    linear-gradient(160deg, #7f9994 0%, #287f9a 40%, #152f40 68%, #7a6b52 100%);
+}
+
+.glass-overlay {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 43%;
+  background: linear-gradient(160deg, rgba(201, 223, 211, .79), rgba(79, 164, 178, .58) 58%, rgba(20, 99, 133, .3));
+  backdrop-filter: blur(1px);
+  clip-path: polygon(0 0, 100% 3%, 100% 100%, 0 87%);
+}
+
+.welcome-title-wrap {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 42px 18px 0;
+  text-align: center;
+  color: #fff;
+}
+
+.welcome-title-wrap h1 {
+  margin: 0;
+  font-size: clamp(28px, 8vw, 36px);
+  font-weight: 500;
+  line-height: 1.22;
+  letter-spacing: -.7px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, .08);
+}
+
+.welcome-card {
+  position: relative;
+  z-index: 2;
+  width: calc(100% - 16px);
+  margin-top: 58px;
+  padding: 18px 16px 17px;
+  border-radius: var(--radius-card);
+  background: var(--panel);
+  box-shadow: 0 5px 16px rgba(0, 0, 0, .12);
+}
+
+.welcome-card h2 {
+  margin: 0 0 12px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.35;
+  font-weight: 700;
+}
+
+.welcome-card p {
+  margin: 0;
+  color: #3f454a;
+  font-size: 12.3px;
+  line-height: 1.43;
+}
+
+.primary-button {
+  min-height: 44px;
+  padding: 12px 24px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--button);
+  color: #20252a;
+  font-weight: 600;
+  font-size: 13px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .12);
+  transition: transform .15s ease, background .15s ease;
+}
+.primary-button:hover { background: #e8f3fa; transform: translateY(-1px); }
+.dive-button { position: relative; z-index: 2; margin-top: 14px; }
+
+/* Instruction page mirrors the supplied reference: rounded blue panel over the exhibit image. */
+.instruction-exhibit{justify-content:center;padding:30px 8px 18px;background:linear-gradient(180deg,rgba(30,30,30,.35),rgba(20,50,60,.08) 45%,rgba(0,0,0,.2)),url("assets/underwater-background.JPG") center center/cover no-repeat,linear-gradient(160deg,#87958c 0%,#377d91 40%,#1e3c4b 68%,#76694f 100%)}
+
+.instruction-card{width:100%;padding:18px 16px 7px;border-radius:20px;background:var(--panel);position:relative;z-index:1}
+
+.instruction-card h1{margin:0 0 15px;text-align:center;font-size:14px;line-height:1.35;font-weight:700}
+
+.instruction-card p{margin:0 0 14px;color:#3f454a;font-size:12px;line-height:1.42}
+
+.fossil-image{display:block;width:98px;height:98px;object-fit:contain;margin:2px auto 0;mix-blend-mode:multiply}
+
+.instruction-button{position:relative;z-index:1;margin-top:18px}
+
+/* Second screen: functional prototype placeholder. */
+.scan-screen {
+  padding: 30px 20px 40px;
+  background: #1e5d7b;
+}
+.scan-header { padding: 10px 2px 22px; }
+.eyebrow {
+  margin: 0 0 8px;
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+}
+.scan-header h1 { margin: 0 0 8px; font-size: 30px; font-weight: 600; }
+.scan-header > p:last-child { margin: 0; color: white; line-height: 1.5; font-size: 14px; }
+.scan-preview {
+  min-height: 290px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 18px;
+  background: radial-gradient(ellipse at 50% 40%, #c7dce0, #617b83 62%, #273b43);
+  color: white;
+  margin-bottom: 20px;
+}
+.scan-frame {
+  position: absolute;
+  width: 66%;
+  aspect-ratio: 1;
+  border: 2px solid rgba(255,255,255,.85);
+  border-radius: 20px;
+}
+.scan-frame::before, .scan-frame::after, .scan-frame span::before, .scan-frame span::after {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-color: #d9edf5;
+  border-style: solid;
+}
+.scan-frame::before { top: -2px; left: -2px; border-width: 3px 0 0 3px; border-radius: 8px 0 0; }
+.scan-frame::after { top: -2px; right: -2px; border-width: 3px 3px 0 0; border-radius: 0 8px 0 0; }
+.scan-frame span::before { bottom: -2px; left: -2px; border-width: 0 0 3px 3px; border-radius: 0 0 0 8px; }
+.scan-frame span::after { bottom: -2px; right: -2px; border-width: 0 3px 3px 0; border-radius: 0 0 8px; }
+.scan-preview-copy { position: relative; z-index: 1; text-align: center; padding: 20px; text-shadow: 0 1px 5px #24343a; }
+.camera-icon { font-size: 38px; }
+.scan-action-button{width:100%}.text-button{display:block;margin:14px auto 0;padding:8px 12px;border:0;background:transparent;color:#326c80;text-decoration:underline;font-size:13px}
+.scan-preview-copy p { max-width: 220px; font-size: 13px; line-height: 1.45; }
+.scan-screen > .primary-button { width: 100%; }
+.text-button {
+  display: block;
+  margin: 14px auto 0;
+  padding: 8px 12px;
+  border: 0;
+  background: transparent;
+  color: #102b3f;
+  text-decoration: underline;
+  font-size: 13px;
+}
+.artifact-result {
+  margin-top: 24px;
+  padding: 20px;
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 3px 14px rgba(22, 50, 60, .08);
+}
+.artifact-result h2 { margin: 0 0 8px; font-size: 22px; }
+.artifact-result p {color : #102b3f}
+.artifact-result p:not(.eyebrow) { color: #59636a; font-size: 14px; line-height: 1.55; }
+.artifact-result .primary-button { width: 100%; margin-top: 8px; }
+
+@media (min-width: 600px) {
+  body { padding: 24px 0; align-items: flex-start; }
+  .app-shell { min-height: 0; border-radius: 4px; }
+  .screen { min-height: 844px; }
+  .welcome-screen { padding: 7.5vh 0; }
+  .exhibit-image { min-height: 660px; }
+  .welcome-title-wrap h1 { font-size: 34px; }
+}
+
+/* Four-artifact journey progress */
+.progress-label { 
+  margin: 12px 0 7px; 
+  color: white; 
+  font-size: 12px; 
+  font-weight: 700; 
+}
+.progress-track { 
+  width: 100%; 
+  height: 6px; 
+  overflow: hidden; 
+  border-radius: 999px; 
+  background: #d8e2e5; 
+}
+.progress-track span { 
+  display: block; 
+  width: 0; 
+  height: 100%; 
+  border-radius: inherit; 
+  background: #367f95; 
+  transition: width .25s ease; 
+}
+.completion-result { 
+  border: 1px solid #c8e1e8; 
+}
