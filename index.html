@@ -39,10 +39,9 @@
         <div class="progress-track" aria-hidden="true"><span id="progressBar"></span></div>
       </header>
       <div class="scan-preview">
-        <div class="scan-frame" aria-hidden="true"><span></span></div>
-        <div class="scan-preview-copy">
-          <span class="camera-icon" aria-hidden="true">◎</span>
-          <p id="scanStatus">Camera preview will appear here.</p>
+        <div class="scan-frame" aria-hidden="true" id= "scan-frame"><span></span></div>
+        <div class="scan-preview-copy" >
+          
         </div>
       </div>
       <button class="primary-button" id="scanButton" type="button">Try a sample scan</button>
@@ -67,6 +66,7 @@
       </article>
     </section>
   </main>
+  <script src="https://unpkg.com/html5-qrcode@2.3.8"></script>
   <script src="script.js"></script>
 </body>
 </html>

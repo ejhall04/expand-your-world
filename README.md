@@ -13,11 +13,11 @@ You can also use another local static server.
 - Explore this artifact reveals placeholder investigation content.
 - The sample scan and explore artifact placeholders repeat four times to simulate the final experience
 - Back and restart controls work.
+- Add actual camera access 
 
 Recognition, collection API access, and chatbot responses are intentionally mocked.
 
 ## Work left to do
-- Add actual camera access
 - Add character archetypes to the end
 - Add recommended artifacts
 - Add real collection data once given by CMC
