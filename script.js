@@ -69,7 +69,7 @@ scanButton.addEventListener("click", async() => {
         return
       }
       await scanner.start(
-        {facingMode: "environment" },
+        {facingMode: "environment"},
         {fps: 60, qrbox: {width:250, height:250}},
         (decodedText) => {
           console.log(`QR Code detected: ${decodedText} at ${discoveredCount}`);
