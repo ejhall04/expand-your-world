@@ -68,21 +68,51 @@ scanButton.addEventListener("click", () => {
     return;
   }
 
-  currentArtifact = artifacts[discoveredCount];
-  discoveredCount += 1;
-  scanStatus.textContent = `${currentArtifact.name} recognized. This is a simulated scan.`;
-  scanInstructions.textContent = discoveredCount < artifacts.length
-    ? 'Explore this match, then scan the next artifact marker to continue your journey.'
-    : 'You found all four artifacts! Explore this match, then finish your journey.';
-  artifactResult.querySelector('.eyebrow').textContent = `SAMPLE MATCH ${discoveredCount} OF ${artifacts.length}`;
-  artifactResult.querySelector('h2').textContent = currentArtifact.name;
-  artifactResult.querySelector('p:not(.eyebrow)').textContent = 'This is a simulated match for the prototype. Later, this area can display the museum’s verified artifact record, image, and collection link.';
-  detailsCopy.textContent = currentArtifact.description;
-  artifactResult.hidden = false;
-  detailsResult.hidden = true;
-  completionResult.hidden = true;
-  scanButton.textContent = discoveredCount < artifacts.length ? 'Scan next artifact' : 'Finish journey';
-  updateProgress();
+  try {
+
+      if (scanner == null) {
+        scanner = new Html5Qrcode("scan-frame");
+      }else{
+        return
+      }
+      await scanner.start(
+        {facingMode: "environment"},
+        {fps: 60, qrbox: {width:250, height:250}},
+        (decodedText) => {
+          console.log(`QR Code detected: ${decodedText} at ${discoveredCount}`);
+          if(discoveredCount == String(decodedText - 1)) {
+            currentArtifact = artifacts[discoveredCount];
+            discoveredCount += 1;
+            scanInstructions.textContent = discoveredCount < artifacts.length
+              ? 'Explore this match, then scan the next artifact marker to continue your journey.'
+              : 'You found all four artifacts! Explore this match, then finish your journey.';
+            artifactResult.querySelector('.eyebrow').textContent = `SAMPLE MATCH ${discoveredCount} OF ${artifacts.length}`;
+            artifactResult.querySelector('h2').textContent = currentArtifact.name;
+            artifactResult.querySelector('p:not(.eyebrow)').textContent = 'This is a simulated match for the prototype. Later, this area can display the museum’s verified artifact record, image, and collection link.';
+            detailsCopy.textContent = currentArtifact.description;
+            artifactResult.hidden = false;
+            detailsResult.hidden = true;
+            completionResult.hidden = true;
+            scanButton.textContent = discoveredCount < artifacts.length ? 'Scan next artifact' : 'Finish journey';
+            updateProgress();
+            if (discoveredCount >= artifacts.length) {
+              scanner.stop()
+              completionResult.hidden = false;
+              artifactResult.hidden = true;
+              detailsResult.hidden = true;
+              scanButton.hidden = true;
+              completionResult.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+              return;
+            }
+          }
+        },
+        ()=>{}// No QR code detected yet.
+      );
+
+    } catch (error) {
+      console.error("Error starting the scanner:", error);
+    }
+  
 });
 
 continueButton.addEventListener("click", () => {
