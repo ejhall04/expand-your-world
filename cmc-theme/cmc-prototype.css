@@ -1,0 +1,605 @@
+/*
+ * Blue CMC visitor-theme adapter.
+ * The original ExYoWo visitor stylesheet supplies the actual blue design tokens
+ * and button treatments. This file maps those visual treatments to the existing
+ * prototype's class names without changing its scanner JavaScript.
+ */
+:root {
+  --cmc-blue: #245ca9;
+  --cmc-light-blue: #d2ebff;
+  --cmc-charcoal: #434343;
+  --cmc-copy: #404040;
+  --cmc-muted: #757679;
+  --cmc-black: #000000;
+  --cmc-white: #ffffff;
+  --cmc-silver: #c0c0c0;
+  --cmc-orange: #e57e39;
+}
+
+body.cmc-experience {
+  margin: 0;
+  background: #fff;
+  color: var(--cmc-copy);
+  font-family: var(--cmc-roman, Arial, Helvetica, sans-serif);
+}
+
+.cmc-experience .welcome-screen,
+.cmc-experience .instruction-screen,
+.cmc-experience .scan-screen,
+.cmc-experience .app-shell,
+.cmc-experience .screen {
+  background: #fff;
+  color: var(--cmc-copy);
+}
+
+/* Welcome screen: CMC's blue-led visitor styling. */
+.cmc-experience .welcome-screen,
+.cmc-experience .exhibit-image {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: #fff;
+}
+
+.cmc-experience .glass-overlay {
+  display: none;
+}
+
+.cmc-experience .welcome-title-wrap {
+  width: 100%;
+  margin: 0;
+  padding: clamp(3rem, 8vh, 6rem) max(20px, calc((100% - 1200px) / 2));
+  background: #fff;
+  color: #000;
+  text-align: left;
+}
+
+.cmc-experience .welcome-title-wrap h1 {
+  max-width: 1100px;
+  margin: 0;
+  color: #000;
+  font-family: var(--cmc-bold, Arial, Helvetica, sans-serif);
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1;
+  text-shadow: none;
+}
+
+.cmc-experience .welcome-card {
+  width: min(100% - 40px, 760px);
+  margin: clamp(1.5rem, 5vh, 3rem) auto 0;
+  padding: 0 0 1.5rem;
+  border: 0;
+  border-bottom: 1px solid #b7b7b7;
+  border-radius: 0;
+  background: #fff;
+  box-shadow: none;
+}
+
+.cmc-experience .welcome-card h2,
+.cmc-experience .instruction-card h1 {
+  color: #000;
+  font-family: var(--cmc-bold, Arial, Helvetica, sans-serif);
+  font-weight: 700;
+  text-align: left;
+}
+
+.cmc-experience .welcome-card p,
+.cmc-experience .instruction-card p {
+  color: var(--cmc-copy);
+  font-family: var(--cmc-roman, Arial, Helvetica, sans-serif);
+  line-height: 1.65;
+}
+
+.cmc-experience .primary-button {
+  min-height: 48px;
+  padding: 0.85rem 1.4rem;
+  border: 1px solid var(--cmc-blue);
+  border-radius: 0;
+  background: var(--cmc-blue);
+  color: #fff;
+  box-shadow: none;
+  font-family: var(--cmc-bold, Arial, Helvetica, sans-serif);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: background .18s ease, color .18s ease;
+}
+
+.cmc-experience .primary-button:hover,
+.cmc-experience .primary-button:focus-visible {
+  border: 2px solid var(--cmc-blue);
+  background: #fff;
+  color: #000;
+  transform: none;
+}
+
+.cmc-experience .dive-button,
+.cmc-experience .instruction-button {
+  align-self: center;
+  margin: 1.5rem auto 2.5rem;
+}
+
+/* Instruction screen: white page, black text, blue accent rule. */
+.cmc-experience .instruction-exhibit {
+  justify-content: center;
+  background: #fff;
+}
+
+.cmc-experience .instruction-card {
+  width: min(100% - 40px, 800px);
+  padding: clamp(1.5rem, 4vw, 3rem) 0;
+  border: 0;
+  border-top: 4px solid var(--cmc-blue);
+  border-radius: 0;
+  background: #fff;
+  box-shadow: none;
+}
+
+/* Scanner: keep the existing camera window dimensions and QR overlay behavior. */
+.cmc-experience .scan-screen {
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 0 0 3rem;
+  background: #fff;
+  color: var(--cmc-copy);
+}
+
+.cmc-experience .scan-header {
+  padding: clamp(1.75rem, 4vw, 3rem) max(20px, calc((100% - 1200px) / 2));
+  background: #fff;
+  color: #000;
+  border-bottom: 1px solid #000;
+}
+
+.cmc-experience .scan-header .eyebrow,
+.cmc-experience .progress-label {
+  color: var(--cmc-blue);
+  font-family: var(--cmc-bold, Arial, Helvetica, sans-serif);
+  font-size: .76rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.cmc-experience .scan-header h1 {
+  margin: 0 0 .75rem;
+  color: #000;
+  font-family: var(--cmc-bold, Arial, Helvetica, sans-serif);
+  font-size: clamp(2rem, 4.5vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -.03em;
+  line-height: 1.05;
+}
+
+.cmc-experience .scan-header > p:last-of-type {
+  max-width: 760px;
+  color: var(--cmc-copy);
+  line-height: 1.6;
+}
+
+.cmc-experience .progress-track {
+  height: 6px;
+  border-radius: 0;
+  background: #d6d6d6;
+}
+
+.cmc-experience .progress-track span {
+  border-radius: 0;
+  background: var(--cmc-blue);
+}
+
+.cmc-experience .scan-preview {
+  width: min(calc(100% - 40px), 760px);
+  margin: 2rem auto 1.5rem;
+  border: 1px solid #b7b7b7;
+  border-radius: 0;
+}
+
+.cmc-experience .scan-preview.camera-active {
+  border-color: #000;
+  background: #071b25;
+}
+
+/* QR detection frame remains constrained by the original preview viewport. */
+.cmc-experience .scan-frame {
+  border-radius: 0;
+}
+
+.cmc-experience .scan-frame::before,
+.cmc-experience .scan-frame::after,
+.cmc-experience .scan-frame span::before,
+.cmc-experience .scan-frame span::after {
+  border-radius: 0;
+}
+
+.cmc-experience #scanButton {
+  display: flex;
+  width: min(calc(100% - 40px), 760px);
+  margin: 0 auto;
+}
+
+.cmc-experience .text-button {
+  color: var(--cmc-blue);
+  font-family: var(--cmc-bold, Arial, Helvetica, sans-serif);
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.cmc-experience .artifact-result {
+  width: min(calc(100% - 40px), 760px);
+  margin: 2rem auto 0;
+  padding: 1.5rem 0;
+  border: 0;
+  border-top: 1px solid #b7b7b7;
+  border-bottom: 1px solid #b7b7b7;
+  border-radius: 0;
+  background: #fff;
+  box-shadow: none;
+}
+
+.cmc-experience .artifact-result .eyebrow {
+  color: var(--cmc-blue);
+  font-family: var(--cmc-bold, Arial, Helvetica, sans-serif);
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.cmc-experience .artifact-result h2 {
+  color: #000;
+  font-family: var(--cmc-bold, Arial, Helvetica, sans-serif);
+  font-weight: 700;
+}
+
+.cmc-experience .artifact-result p:not(.eyebrow) {
+  color: var(--cmc-copy);
+  line-height: 1.6;
+}
+
+.cmc-experience .completion-result {
+  border-top: 4px solid var(--cmc-blue);
+}
+
+/* Blue is used for focus states in the visitor theme. */
+.cmc-experience button:focus-visible {
+  outline: 3px solid #109cde;
+  outline-offset: 3px;
+}
+
+@media (max-width: 520px) {
+  .cmc-experience .welcome-title-wrap {
+    padding: 3rem 20px 2.5rem;
+  }
+  .cmc-experience .welcome-card,
+  .cmc-experience .instruction-card {
+    width: calc(100% - 32px);
+  }
+  .cmc-experience .scan-header {
+    padding: 1.75rem 16px;
+  }
+  .cmc-experience .scan-preview,
+  .cmc-experience #scanButton,
+  .cmc-experience .artifact-result {
+    width: calc(100% - 32px);
+  }
+}
+/* Welcome and instructions screens */
+.cmc-experience .welcome-screen:not([hidden]),
+.cmc-experience .instruction-screen:not([hidden]) {
+    display: flex;
+}
+
+/* Scanning screen */
+.cmc-experience .scan-screen:not([hidden]) {
+    display: block;
+}
+/* Artifact information appears in a focused pop-up above the scanner. */
+body.modal-open {
+  overflow: hidden;
+}
+
+.cmc-experience .artifact-modal[hidden] {
+  display: none !important;
+}
+
+.cmc-experience .artifact-modal:not([hidden]) {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.cmc-experience .artifact-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: rgba(8, 24, 40, .68);
+  cursor: pointer;
+}
+
+.cmc-experience .artifact-modal-card {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 620px);
+  max-height: min(82vh, 720px);
+  overflow-y: auto;
+  padding: clamp(28px, 5vw, 48px);
+  border-top: 6px solid var(--cmc-blue);
+  background: #fff;
+  color: var(--cmc-copy);
+  box-shadow: 0 18px 60px rgba(0, 0, 0, .28);
+}
+
+.cmc-experience .modal-close-button {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  background: transparent;
+  color: #333;
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.cmc-experience .artifact-modal-card .eyebrow {
+  margin: 0 48px 12px 0;
+  color: var(--cmc-blue);
+  font-family: var(--cmc-bold, Arial, Helvetica, sans-serif);
+  font-size: .76rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.cmc-experience .artifact-modal-card h2 {
+  margin: 0 0 14px;
+  color: #000;
+  font-family: var(--cmc-bold, Arial, Helvetica, sans-serif);
+  font-size: clamp(1.7rem, 4vw, 2.35rem);
+  line-height: 1.12;
+}
+
+.cmc-experience .artifact-modal-card p:not(.eyebrow) {
+  margin: 0 0 24px;
+  color: var(--cmc-copy);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.cmc-experience .artifact-modal-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.cmc-experience .artifact-modal-card .primary-button,
+.cmc-experience .artifact-modal-card .modal-secondary-button {
+  width: 100%;
+  min-height: 48px;
+  margin-top: 4px;
+}
+
+.cmc-experience .artifact-modal-card .modal-secondary-button {
+  padding: 12px 20px;
+  border: 2px solid var(--cmc-blue);
+  border-radius: 4px;
+  background: #fff;
+  color: var(--cmc-blue);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cmc-experience .artifact-modal-card .modal-secondary-button:hover {
+  background: #edf5fc;
+}
+
+.cmc-experience .artifact-modal-card .modal-secondary-button[hidden] {
+  display: none !important;
+}
+
+.cmc-experience .artifact-modal button:focus-visible {
+  outline: 3px solid var(--cmc-orange);
+  outline-offset: 3px;
+}
+
+@media (max-width: 520px) {
+  .cmc-experience .artifact-modal:not([hidden]) {
+    padding: 14px;
+  }
+
+  .cmc-experience .artifact-modal-card {
+    max-height: 88vh;
+    padding: 34px 22px 24px;
+  }
+}
+
+/* Persistent CMC / Expand Your World masthead shared by every screen. */
+.cmc-experience .site-banner {
+  position: sticky;
+  top: 0;
+  z-index: 1100;
+  width: 100%;
+  min-height: 87px;
+  background: #fff;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .12);
+}
+
+/* The CMC wordmark reuses the official horizontal logo URL from the visitor theme. */
+.cmc-experience .site-banner .cmc-wordmark {
+  width: 155px;
+  height: 87px;
+  background-image: var(--cmc-logo);
+  background-repeat: no-repeat;
+  background-size: 128px;
+  background-position: left center;
+}
+
+.cmc-experience .site-banner .brand {
+  min-width: 0;
+  padding-left: 20px;
+  border-left: 1px solid #b7b7b7;
+}
+
+/* Opening screen: museum photograph on the left, welcome copy on the right. */
+.cmc-experience .welcome-screen {
+  min-height: calc(100vh - 87px);
+  min-height: calc(100dvh - 87px);
+  padding: 0;
+  background: #fff;
+}
+
+.cmc-experience .welcome-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+  width: 100%;
+  min-height: calc(100vh - 87px);
+  min-height: calc(100dvh - 87px);
+}
+
+.cmc-experience .welcome-layout > .exhibit-image {
+  min-width: 0;
+  min-height: 610px;
+  background-image:
+    linear-gradient(180deg, rgba(0, 0, 0, .02), rgba(0, 0, 0, .12)),
+    url("https://www.cincymuseum.org/wp-content/uploads/2019/05/HomePage-Misson-GhostedUT.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.cmc-experience .welcome-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  min-width: 0;
+  padding: clamp(28px, 5vw, 58px);
+  background: #fff;
+  background-image: var(--cmc-wave);
+  background-repeat: no-repeat;
+  background-position: right -40px top -20px;
+}
+
+.cmc-experience .welcome-content .welcome-title-wrap {
+  width: 100%;
+  padding: 0;
+  color: #000;
+  text-align: left;
+}
+
+.cmc-experience .welcome-content .welcome-title-wrap h1 {
+  max-width: 9ch;
+  margin: 0 0 22px;
+  color: #000;
+  font-family: var(--cmc-bold, Arial, Helvetica, sans-serif);
+  font-size: clamp(2.5rem, 5vw, 4.4rem);
+  font-weight: 700;
+  letter-spacing: -.04em;
+  line-height: 1.02;
+  text-shadow: none;
+}
+
+.cmc-experience .welcome-content .welcome-card {
+  width: 100%;
+  margin: 0;
+  padding: 0 0 22px;
+  border: 0;
+  border-bottom: 1px solid #b7b7b7;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.cmc-experience .welcome-content .welcome-card h2 {
+  margin: 0 0 12px;
+  color: #000;
+  font-family: var(--cmc-bold, Arial, Helvetica, sans-serif);
+  font-size: 1.25rem;
+  text-align: left;
+}
+
+.cmc-experience .welcome-content .welcome-card p {
+  color: var(--cmc-copy);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.cmc-experience .welcome-content .dive-button {
+  align-self: flex-start;
+  margin: 24px 0 0;
+}
+
+@media (max-width: 700px) {
+  .cmc-experience .site-banner {
+    min-height: 74px;
+    padding: 8px 14px;
+    grid-template-columns: 105px minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .cmc-experience .site-banner .cmc-wordmark {
+    width: 105px;
+    height: 58px;
+    background-size: 105px;
+  }
+
+  .cmc-experience .site-banner .brand {
+    padding-left: 12px;
+  }
+
+  .cmc-experience .site-banner .brand strong {
+    font-size: 13px;
+    line-height: 1.1;
+    letter-spacing: 1px;
+  }
+
+  .cmc-experience .site-banner .brand span {
+    display: block;
+    margin-top: 3px;
+    font-size: 9px;
+    line-height: 1.2;
+  }
+
+  .cmc-experience .welcome-screen,
+  .cmc-experience .welcome-layout {
+    min-height: calc(100vh - 74px);
+    min-height: calc(100dvh - 74px);
+  }
+
+  .cmc-experience .welcome-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .cmc-experience .welcome-layout > .exhibit-image {
+    min-height: 34vh;
+    min-height: 34dvh;
+    background-position: center 45%;
+  }
+
+  .cmc-experience .welcome-content {
+    justify-content: flex-start;
+    padding: 28px 22px 34px;
+  }
+
+  .cmc-experience .welcome-content .welcome-title-wrap h1 {
+    max-width: none;
+    margin-bottom: 16px;
+    font-size: clamp(2.25rem, 9vw, 3.25rem);
+  }
+
+  .cmc-experience .welcome-content .welcome-card p {
+    font-size: .94rem;
+  }
+}

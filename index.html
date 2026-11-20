@@ -5,28 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Expand Your World</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="cmc-theme/cmc-theme.css">
+  <link rel="stylesheet" href="cmc-theme/exyowo-visitor.css">
+  <link rel="stylesheet" href="cmc-theme/cmc-prototype.css">
 </head>
-<body>
+<body class="cmc-experience">
   <main class="app-shell">
-    <section class="screen welcome-screen" id="welcomeScreen" aria-labelledby="welcomeTitle">
-      <div class="exhibit-image" role="img" aria-label="Museum exhibit">
-        <div aria-hidden="true"></div>
-        <div class="welcome-title-wrap">
-          <h1 id="welcomeTitle">Expand Your<br>World</h1>
+    <header class="topbar site-banner" aria-label="Cincinnati Museum Center and Expand Your World">
+      <div class="cmc-wordmark" role="img" aria-label="Cincinnati Museum Center"></div>
+      <div class="brand">
+        <div>
+          <strong>Expand Your World</strong>
+          <span>Cincinnati Museum Center × NKU AI Native Studio</span>
         </div>
-        <article class="welcome-card">
-          <h2>Welcome to Expand Your World!</h2>
-          <p>Take a journey through the Ancient Worlds Hiding in Plain Sight to learn more about the traces from the past that have been preserved over millions of years. This guide will help you dive deeper into the artifacts scattered around the exhibit and learn more about the kind of explorer you are. Completely expand your world to receive your character and suggestions to investigate in other exhibits!</p>
-        </article>
-        <button class="primary-button dive-button" id="diveButton" type="button">Dive In!</button>
+      </div>
+    </header>
+
+    <section class="screen welcome-screen" id="welcomeScreen" aria-labelledby="welcomeTitle">
+      <div class="welcome-layout">
+        <div class="exhibit-image" role="img" aria-label="Cincinnati Museum Center at Union Terminal"></div>
+        <div class="welcome-content">
+          <div class="welcome-title-wrap">
+            <h1 id="welcomeTitle">Expand Your World</h1>
+          </div>
+          <article class="welcome-card">
+            <h2>Welcome to Expand Your World!</h2>
+            <p>Take a journey through the Ancient Worlds Hiding in Plain Sight to learn more about the traces from the past that have been preserved over millions of years. This guide will help you follow your curiousity and dive deeper into the artifacts scattered around the exhibit. Completely expand your world to receive your character, suggestions of what to look for in other exhibits, and an interactive experience personalized for you!</p>
+          </article>
+          <button class="primary-button dive-button" id="diveButton" type="button">Dive In!</button>
+        </div>
       </div>
     </section>
     <section class="screen instruction-screen" id="instructionScreen" hidden aria-labelledby="instructionTitle">
       <div class="instruction-exhibit" role="img" aria-label="Museum exhibit background">
         <article class="instruction-card"><h1 id="instructionTitle">How to Expand Your World</h1>
-          <p>There are 4 artifacts in the Ancient Worlds Hiding in Plain Sight exhibit that are currently part of the “Expand Your World” journey. Scan the markers next to these artifacts to learn more about the object and the world that they came from. Find and scan each of the 4 objects to fully expand your world and find out what kind of world explorer you are!</p>
-          <p>Let's start with the first artifact: the Helix Fossil. See if you can find it!</p>
-          <img class="fossil-image" src="assets/helix-fossil.png" alt="Illustration of a spiral-shaped fossil">
+          <p>There are 4 artifacts in the Ancient Worlds Hiding in Plain Sight exhibit that are currently part of the “Expand Your World” journey. Scan the markers next to these artifacts to learn more about the object and the world that they came from. Find and scan each of the 4 objects to fully expand your world and find out what character you are!</p>
+          <p>Our jounrey through ancient worlds starts right here in Cincinnati with the Cincinnati city fossil! See if you can find it!</p>
         </article><button class="primary-button instruction-button" id="getStartedButton" type="button">Let's Get Started!</button>
       </div>
     </section>
@@ -34,31 +48,32 @@
       <header class="scan-header">
         <p class="eyebrow">EXPAND YOUR WORLD</p>
         <h1 id="scanTitle">Let's explore.</h1>
-        <p id="scanInstructions">Find the Helix Fossil marker in the exhibit and scan it to begin your investigation.</p>
+        <p id="scanInstructions">Find the Cincinnati city fossil marker in the exhibit and scan it to begin your investigation.</p>
         <p class="progress-label" id="progressLabel" aria-live="polite">Artifact 0 of 4 discovered</p>
         <div class="progress-track" aria-hidden="true"><span id="progressBar"></span></div>
       </header>
       <div class="scan-preview">
-        <div class="scan-frame" aria-hidden="true"><span></span></div>
-        <div class="scan-preview-copy">
-          <span class="camera-icon" aria-hidden="true">◎</span>
-          <p id="scanStatus">Camera preview will appear here.</p>
+        <div id="qr-reader" class="qr-reader" aria-label="Camera QR scanner"></div>
+        <div class="scan-frame" aria-hidden="true" id="scan-frame"><span></span></div>
+        <div class="scan-preview-copy" id="scanStatus" role="status" aria-live="polite">
+          <span class="status-icon" aria-hidden="true">⌖</span>
+          <p>Camera is ready. Press “Try a sample scan” to begin.</p>
         </div>
       </div>
       <button class="primary-button" id="scanButton" type="button">Try a sample scan</button>
       <button class="text-button" id="backToInstructionsButton" type="button">Back to instructions</button>
-      <article class="artifact-result" id="artifactResult" hidden>
-        <p class="eyebrow">SAMPLE MATCH FOUND</p>
-        <h2>Helix Fossil</h2>
-        <p>This is a simulated match for the prototype. Later, this area can display the museum's official artifact record, image, and collection link.</p>
-        <button class="primary-button" id="continueButton" type="button">Explore this artifact</button>
-      </article>
-      <article class="artifact-result" id="detailsResult" hidden>
-        <p class="eyebrow">YOUR INVESTIGATION</p>
-        <h2>Take a closer look</h2>
-        <p id="detailsCopy">What details stand out to you? Look at the object's shape, material, markings, and condition. Later, this area can connect to museum collection data and suggested AI questions.</p>
-        <button class="text-button" id="restartButton" type="button">Restart experience</button>
-      </article>
+      <section class="artifact-modal" id="artifactModal" role="dialog" aria-modal="true" aria-labelledby="modalArtifactTitle" aria-describedby="modalArtifactCopy" hidden>
+        <div class="artifact-modal-backdrop" aria-hidden="true"></div>
+        <div class="artifact-modal-card" role="document">
+          <p class="eyebrow" id="modalArtifactEyebrow">SAMPLE MATCH FOUND</p>
+          <h2 id="modalArtifactTitle">Cincinnati city fossil</h2>
+          <p id="modalArtifactCopy">You expanded your world! Click "Explore this artifact" to learn more about it, or "Scan next artifact" to continue on your journey.</p>
+          <div class="artifact-modal-actions">
+            <button class="primary-button" id="exploreArtifactButton" type="button">Explore this artifact</button>
+            <button class="modal-secondary-button" id="scanNextArtifactButton" type="button">Scan next artifact</button>
+          </div>
+        </div>
+      </section>
       <article class="artifact-result completion-result" id="completionResult" hidden>
         <p class="eyebrow">JOURNEY COMPLETE</p>
         <h2>You expanded your world!</h2>
@@ -67,6 +82,7 @@
       </article>
     </section>
   </main>
+  <script src="https://unpkg.com/html5-qrcode@2.3.8"></script>
   <script src="script.js"></script>
 </body>
 </html>
