@@ -28,11 +28,8 @@ CREATE TABLE Tours_Objects (
 );
 
 CREATE TABLE Users (
-    
   id VARCHAR(36) PRIMARY KEY,
-  
   is_guest BOOLEAN DEFAULT 1,
-
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 

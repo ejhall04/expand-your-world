@@ -1,0 +1,13 @@
+$kind: http-request
+description: ""
+url: http://localhost:8080/business%20layer/api.php?action=scan&object_id=4
+method: POST
+headers:
+  Content-Type: application/json
+queryParams:
+  action: scan
+  object_id: "4"
+body:
+  type: json
+  content: ""
+order: 1000
