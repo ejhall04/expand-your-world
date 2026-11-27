@@ -1,0 +1,11 @@
+$kind: http-request
+description: ""
+url: http://localhost:8080/business%20layer/api.php?action=startSession&tour_id=1
+method: POST
+queryParams:
+  action: startSession
+  tour_id: "1"
+body:
+  type: json
+  content: ""
+order: 3000

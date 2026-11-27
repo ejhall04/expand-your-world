@@ -1,0 +1,10 @@
+$kind: http-request
+description: ""
+url: http://localhost:8080/business%20layer/api.php?action=createUser
+method: POST
+queryParams:
+  action: createUser
+body:
+  type: json
+  content: ""
+order: 2000

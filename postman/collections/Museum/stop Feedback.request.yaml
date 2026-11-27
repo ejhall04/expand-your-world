@@ -1,0 +1,8 @@
+$kind: http-request
+description: ""
+url: http://localhost:8080/business%20layer/api.php?action=submitStopFeedback&feedback=Interesting%20exhibit
+method: POST
+queryParams:
+  action: submitStopFeedback
+  feedback: Interesting%20exhibit
+order: 6000

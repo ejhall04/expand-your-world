@@ -16,7 +16,7 @@ class Sessions {
         return $stmt;
     }
     public function end_active_session($user_id) {
-        $query = 'UPDATE ' . $this->table . ' SET active = FALSE WHERE user_id = ?;';
+        $query = 'UPDATE ' . $this->table . ' SET active = NULL WHERE user_id = ?;';
         $stmt = $this->conn->prepare($query);
         $stmt->execute([$user_id]);
         return $stmt;

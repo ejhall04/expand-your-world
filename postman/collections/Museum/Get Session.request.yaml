@@ -1,0 +1,7 @@
+$kind: http-request
+description: ""
+url: http://localhost:8080/business%20layer/api.php?action=getSession
+method: GET
+queryParams:
+  action: getSession
+order: 5000

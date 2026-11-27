@@ -1,0 +1,7 @@
+$kind: http-request
+description: ""
+url: http://localhost:8080/business%20layer/api.php?action=listTours
+method: GET
+queryParams:
+  action: listTours
+order: 4000

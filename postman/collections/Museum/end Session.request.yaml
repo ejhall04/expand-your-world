@@ -1,0 +1,10 @@
+$kind: http-request
+description: ""
+url: http://localhost:8080/business%20layer/api.php?action=endSession
+method: POST
+queryParams:
+  action: endSession
+body:
+  type: json
+  content: ""
+order: 7000

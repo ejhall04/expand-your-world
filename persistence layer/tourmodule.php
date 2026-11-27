@@ -9,11 +9,17 @@ class Tours {
         $this->conn = $db;
     }
 
-    public function list($tour_id) {
+    public function read($tour_id) {
         $query = 'SELECT * FROM ' . $this->table . ' WHERE ' . 'id = ' . $tour_id;
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
-        return $stmt;
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);;
+    }
+    public function list() {
+        $query = 'SELECT id, name, description FROM ' . $this->table . ' ORDER BY name';
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     public function get_object_by_position($tour_id, $position) {
         $query = 'SELECT * FROM tours_objects WHERE tour_id = ? AND position = ?;';

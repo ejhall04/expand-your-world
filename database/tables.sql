@@ -24,13 +24,21 @@ CREATE TABLE Tours_Objects (
   object_id INTEGER NOT NULL,
   FOREIGN KEY (tour_id) REFERENCES Tours(id),
   FOREIGN KEY (object_id) REFERENCES Objects(object_id),
-  PRIMARY KEY (tour_id, object_id, position)
+  PRIMARY KEY (tour_id, object_id, position),
+  CONSTRAINT one_per_position UNIQUE (Tour_id, position)
 );
 
 CREATE TABLE Users (
   id VARCHAR(36) PRIMARY KEY,
   is_guest BOOLEAN DEFAULT 1,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE Archetypes (
+  name VARCHAR(50) NOT NULL,
+  icon VARCHAR(100) NOT NULL,
+  interactive VARCHAR(2048) NOT NULL,
+  PRIMARY KEY (name)
 );
 
 CREATE TABLE Sessions (
@@ -40,20 +48,18 @@ CREATE TABLE Sessions (
   active BOOLEAN DEFAULT 1,
   tour_id INTEGER NOT NULL,
   archetype VARCHAR(50),
-    FOREIGN KEY (user_id) REFERENCES Users(id),
-    FOREIGN KEY (tour_id) REFERENCES Tours(id)
+  feedback_text VARCHAR(255),
+  FOREIGN KEY (user_id) REFERENCES Users(id),
+  FOREIGN KEY (tour_id) REFERENCES Tours(id),
+  FOREIGN KEY (archetype) REFERENCES Archetypes(name),
+  CONSTRAINT not_false CHECK (active IS NULL OR active = 1),
+  CONSTRAINT one_active_session UNIQUE (user_id, active) 
 );
 
 CREATE TABLE Sessions_Pictures (
   id INTEGER PRIMARY KEY AUTO_INCREMENT,
   session_id INTEGER NOT NULL,
   image_url VARCHAR(500) NOT NULL,
-  FOREIGN KEY (session_id) REFERENCES Sessions(session_id)
-);
-
-CREATE TABLE Sessions_Feedback (
-  session_id INTEGER NOT NULL PRIMARY KEY,
-  feedback_text VARCHAR(255) NOT NULL,
   FOREIGN KEY (session_id) REFERENCES Sessions(session_id)
 );
 
@@ -65,4 +71,24 @@ CREATE TABLE Stops (
   PRIMARY KEY (session_id, object_id),
   FOREIGN KEY (session_id) REFERENCES Sessions(session_id),
   FOREIGN KEY (object_id) REFERENCES Objects(object_id)
+);
+
+
+CREATE TABLE Related_Objects (
+  object1 INTEGER,
+  object2 INTEGER,
+  PRIMARY KEY(object1, object2),
+  FOREIGN KEY (object1) REFERENCES Objects(object_id),
+  FOREIGN KEY (object2) REFERENCES Objects(object_id)
+);
+CREATE TABLE Archetype_Interest (
+  archetype VARCHAR(50),
+  object INTEGER NOT NULL,
+  tour INTEGER,
+  interest INTEGER NOT NULL,
+  position INTEGER NOT NULL,
+  PRIMARY KEY (archetype, object, tour),
+  FOREIGN KEY (archetype)REFERENCES Archetypes(name),
+  FOREIGN KEY (tour, object, position) REFERENCES Tours_Objects(tour_id, object_id, position),
+  CONSTRAINT unique_archetype_tour_interest UNIQUE (archetype, tour, interest)
 );
